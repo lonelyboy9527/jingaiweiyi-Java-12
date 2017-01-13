@@ -4,7 +4,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		exp1();
+//		exp1();
+		exp2();
+	}
+	/* ********************12.2 国际化基础、日期******************** */
+	public static void exp2() {
+		MyClass2.exp1(); // 12.2.1 关于i18n
 	}
 	/* ********************12.1 日志******************** */
 	public static void exp1() {
@@ -21,7 +26,8 @@ public class Main {
 //		MyClass1.exp1(); // 12.1.1 日志API简介
 //		MyClass1.exp2(); // 12.1.2 指定日志层级
 //		MyClass1.exp3(); // 12.1.3 使用 Handler 与 Formatter
-		MyClass1.exp4(); // 12.1.4 自定义 Handler、Formatter与Filter
+//		MyClass1.exp4(); // 12.1.4 自定义 Handler、Formatter与Filter
+		MyClass1.exp5(); // 12.1.5 使用 logging.properties
 	} 
 
 }

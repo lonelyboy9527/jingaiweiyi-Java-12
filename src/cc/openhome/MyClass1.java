@@ -1,9 +1,13 @@
 package cc.openhome;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
+import java.util.logging.Formatter;
 import java.util.logging.Handler;
 import java.util.logging.Level;
+import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import cc.openhome.class1.Some;
@@ -189,6 +193,63 @@ public class MyClass1 {
 	}
 	// 自定义 Handler、Formatter与Filter
 	public static void exp4() {
+		System.out.println("exp4 -> 自定义 Handler、Formatter与Filter");
+		/* 如果java.util.logging包中提供的Handler成果都不符合需求，
+		 * 可以继承 Handler类，操作抽象方法 publish()、flush()、close()方法来自定义Handler，建议操作时考虑信息过滤与格式化。
+		 * 
+		 * 例子：
+		 * 在职责分配上，Handler是负责输出，格式化是交由Formatter，而信息过滤是交由Filter。
+		 * */
 		
+		/* 如果自定义 Formatter，可以继承Formatter后操作对象方法 format()，
+		 * 这个方法会传入LogRecord，储存所以日志信息。
+		 * 
+		 * 例子：将ConsoleHandler的 Formatter设定为自定义的Formatter
+		 * */
+		Formatter();
+		
+		/* Logger与 Handler默认只会依据层级过滤信息，
+		 * 
+		 * Logger与 Handler都有 setFilter()方法。
+		 * 可以指定 Filter操作对象，如果想让Logger与 Handler除了依据层级过滤外，
+		 * 还可以加入额外过滤条件，就可以操作 Filter接口
+		 * 
+		 * */
+	}
+	public static void Formatter() {
+		System.out.println("Formatter -> 自定义 Formatter 信息");
+		Logger logger = Logger.getLogger(MyClass1.class.getName());
+		logger.setLevel(Level.CONFIG); // 直接以 Level.CONFIG层级输出信息
+		ConsoleHandler handler = new ConsoleHandler();
+		handler.setLevel(Level.CONFIG);
+		handler.setFormatter(new Formatter() {
+			
+			@Override
+			public String format(LogRecord record) {
+				// TODO Auto-generated method stub
+				return "日志来自 " + record.getSourceClassName() + "." + record.getSourceMethodName() + "\n" 
+								+ "\t层级\t: " + record.getLevel() + "\n"
+								+ "\t信息\t: " + record.getMessage() + "\n"
+								+ "\t时间\t: " + new Date(record.getMillis()) + "\n";
+			}
+		});
+		logger.addHandler(handler);
+		logger.config("自定义 Formatter 信息");
+	}
+	// 使用 logging.properties
+	public static void exp5() {
+		System.out.println("exp5 -> 使用 logging.properties，使Logger套用指定文档中的组态设定");
+		/* 以上都是使用程序撰写的方式，改变 Logger对象的组态。
+		 * 
+		 * 实际上，可以通过logging.properties 来设定 Logger组态，这很方便。
+		 * 
+		 * 例如：在程序开发阶段，在.properties中设定所有 Level.WARNING层级的信息输出，
+		 * 在程序上线之后，若想关闭不会影响程序运行的警讯日志，以减少程序不必要的输出。（只要在 .properties中做个修改即可）
+		 * 
+		 * 注意：在  JRE目录的 lib目录中，有个 logging.properties文档，是设定 Logger组态的参考范例。
+		 * 可以修改这个.properties 后另存至程序的 CLASSPATH中，然后启动JVM时，指定
+		 * java.util.logging.config.file系统属性为 .properties名称，
+		 * 如: -Djava.util.logging.config.file=logging.properties，在程序中的 Logger就会套用指定文档中的组态设定。
+		 * */
 	}
 }
