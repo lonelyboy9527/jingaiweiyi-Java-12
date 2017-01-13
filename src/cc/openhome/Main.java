@@ -18,8 +18,10 @@ public class Main {
 		 * 
 		 * Java SE 提供了日志（Logging）API，可以让你基于标准调用使用。
 		 * */
-		
-		MyClass1.exp1(); // 12.1.1 日志API简介
+//		MyClass1.exp1(); // 12.1.1 日志API简介
+//		MyClass1.exp2(); // 12.1.2 指定日志层级
+//		MyClass1.exp3(); // 12.1.3 使用 Handler 与 Formatter
+		MyClass1.exp4(); // 12.1.4 自定义 Handler、Formatter与Filter
 	} 
 
 }
