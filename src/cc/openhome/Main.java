@@ -17,7 +17,9 @@ public class Main {
 		 * 
 		 * 国际化（i18n）：如果应用程序设计时，可在不修改应用程序情况下，根据不同用户直接采用不同语言，日期格式等，这样的设计考虑称为国际化，简称 i18n (因为 internationlization有18个字母。) 
 		 * */
-		MyClass2.exp1(); // 12.2.1 关于i18n
+//		MyClass2.exp1(); // 12.2.1 关于i18n
+//		MyClass2.exp2(); // 12.2.2 使用 Date与DateFormat
+		MyClass2.exp3(); // 12.2.3 使用 Calendar
 	}
 	/* ********************12.1 日志******************** */
 	public static void exp1() {
