@@ -123,7 +123,7 @@ public class MyClass3 {
 		System.out.println("SplitDemo3 -> 贪婪、逐步、独吞吐量");
 		/* <3>.贪婪、逐步、独吞吐量
 		 * 
-		 * 贪婪量词：{n}。
+		 * （1）.贪婪量词：{n}。
 		 * 如果输入手机号 xxxx-xxxxxxx，可以写成 \d{4}-\d{7}
 		 * 
 		 * 例如：
