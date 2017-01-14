@@ -5,7 +5,16 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		exp1();
-		exp2();
+//		exp2();
+		exp3();
+	}
+	/* ********************12.3 规则表达式******************** */
+	public static void exp3() {
+		/* 规则表示式 主要用于字符、字符串格式比较。
+		 * 
+		 * Java提供一些支持规则表示式操作的标准 API
+		 * */
+		MyClass3.exp1(); // 12.3.1 定义规则表示式
 	}
 	/* ********************12.2 国际化基础、日期******************** */
 	public static void exp2() {
