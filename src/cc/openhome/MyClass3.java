@@ -120,7 +120,7 @@ public class MyClass3 {
 	}
 	
 	public static void SplitDemo3() {
-		System.out.println("SplitDemo3 -> 贪婪、逐步、独吞吐量");
+		System.out.println("SplitDemo3 -> (正则表达式)贪婪、逐步、独吞吐量");
 		/* <3>.贪婪、逐步、独吞吐量
 		 * 
 		 * （1）.贪婪量词：{n}。
@@ -134,6 +134,9 @@ public class MyClass3 {
 		 * X{n,}：X至少出现n次（>=n）
 		 * X{n,m}：X出现n但不超过m次 { n<=次数<m}
 		 * 
+		 * 贪婪量词之所以贪婪，是因为看到贪婪量词时，比较器(Matcher)会把剩余文字整个吃掉，
+		 * 再逐步吐出文字，看看是否符合贪婪量词后的规则表示式。
+		 * 如果，吐出部分符合，而吃下部分也符合贪婪量词就比较成功，结果就是贪婪量词会尽可能地找出长度最长的符合文字。
 		 * */
 	}
 }
