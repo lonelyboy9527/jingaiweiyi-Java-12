@@ -31,7 +31,10 @@ public class MyClass3 {
 //		SplitDemo2();
 		
 		/* <3>.贪婪、逐步、独吞吐量*/
-		SplitDemo3();
+//		SplitDemo3();
+		
+		/* <4>.边界比较*/
+		SplitDemo4();
 	} 
 	public static void Split() {
 		System.out.println("Split -> 切割字符串");
@@ -123,9 +126,13 @@ public class MyClass3 {
 		System.out.println("SplitDemo3 -> (正则表达式)贪婪、逐步、独吞吐量");
 		/* <3>.贪婪、逐步、独吞吐量
 		 * 
-		 * （1）.贪婪量词：{n}。
-		 * 如果输入手机号 xxxx-xxxxxxx，可以写成 \d{4}-\d{7}
+		 * （1）.贪婪量词：.* 
+		 * 贪婪量词之所以贪婪，是因为看到贪婪量词时，比较器(Matcher)会把剩余文字整个吃掉，
+		 * 再逐步吐出文字，看看是否符合贪婪量词后的规则表示式。
+		 * 如果，吐出部分符合，而吃下部分也符合贪婪量词就比较成功，结果就是贪婪量词会尽可能地找出长度最长的符合文字。
 		 * 
+		 * 注意 {n} 是贪婪量词表示法的一种
+		 * 如果输入手机号 xxxx-xxxxxxx，可以写成 \d{4}-\d{7}
 		 * 例如：
 		 * X?：X出现一次或没有
 		 * X*：X出现0次或多次
@@ -134,9 +141,33 @@ public class MyClass3 {
 		 * X{n,}：X至少出现n次（>=n）
 		 * X{n,m}：X出现n但不超过m次 { n<=次数<m}
 		 * 
-		 * 贪婪量词之所以贪婪，是因为看到贪婪量词时，比较器(Matcher)会把剩余文字整个吃掉，
-		 * 再逐步吐出文字，看看是否符合贪婪量词后的规则表示式。
-		 * 如果，吐出部分符合，而吃下部分也符合贪婪量词就比较成功，结果就是贪婪量词会尽可能地找出长度最长的符合文字。
+		 * 
+		 * （2）.逐步量词：.*?
+		 * 如果在贪婪词表示法后加上？，将会称为逐步量词。
+		 * 
+		 * （3）.独吐量词：.*+
+		 * 如果在贪婪量词表示法后加上+，将会成为独吐量词。
+		 * 
+		 * 例子：下面使用 String的 repkaceAll()来示范三个量词的差别:
+		 * */
+		repkaceAll();
+	}
+	public static void repkaceAll() {
+		System.out.println("repkaceAll -> 示范三个量词");
+		String[] regexs = {".*foo", ".*?foo", ".*+foo"};
+		for (String regex : regexs) {
+			System.out.println("xfooxxxxxxfoo".replaceAll(regex, "Orz"));
+		}
+		/* repkaceAll会将符合规则表达式的字符串取代后返回新字符串，出现几次 Orz，
+		 * 就可以知道符合的字符串有几个。*/ 
+	}
+	
+	public static void SplitDemo4() {
+		System.out.println("SplitDemo4 -> 边界比较");
+		
+		/* <4>.边界比较
+		 * 
+		 * 边界比较用来表示文字必须符合指定的边界条件。
 		 * */
 	}
 }
